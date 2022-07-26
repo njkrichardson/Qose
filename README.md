@@ -23,6 +23,10 @@ Qose comes packaged with a simple (GNU) makefile whose compiler flags can be eas
 
 ## Background 
 
+Quantum computing is a type of computation that harnesses the collective properties of quantum states, such as superposition, interference, and entanglement, to perform calculations. The devices that perform quantum computations are known as quantum computers. Though current quantum computers are too small to outperform usual (classical) computers for practical applications, they are believed to be capable of solving certain computational problems, such as integer factorization (which underlies RSA encryption), substantially faster than classical computers. [2]
+
+Therefore, RSA encryption is considered unsafe in the post-quantum era. However, there are still other encryption methods that are proofed safe even with the presence of quantum computers. As an example, the Leighton-Micali Signatures using Hierarchical Signature Systems (i.e., LMS/HSS) is hash-based cryptographic method that fits in the post-quantum environment.
+
 ## Demo 
 
 The demo script mirrors the `demo.c` provided in the hash-sigs repository. It utilizes the same underlying functions, although these have been refactored out of a single source file in order to enable integration with `t_cose`. One can run the demo binary (provided for `x86_64` in `/bin/demo`, or compiled first using the Makefile) without arguments in order to see usage: 
@@ -43,3 +47,5 @@ This project is a work in progress, we are yet to integrate the cryptosystem we'
 
 ## References 
   [1] [Leighton-Micali Hash-Based Signatures](https://datatracker.ietf.org/doc/html/rfc8554)
+
+  [2] [Quantum computing](https://en.wikipedia.org/wiki/Quantum_computing)
