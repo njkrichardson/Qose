@@ -1,3 +1,5 @@
+![release-tag](https://img.shields.io/github/v/release/njkrichardson/qose)
+
 ## Post-Quantum Cryptography 
 
 The development of mature and performant quantum computing systems puts several conventional cryptographic systems under pressure; famously the widely used RSA 
