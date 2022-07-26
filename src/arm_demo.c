@@ -24,6 +24,7 @@
 #include <string.h> 
 #include <time.h> 
 
+#include "core.h"
 #include "hash.h" 
 #include "hss_zeroize.h" 
 #include "hss.h" 
@@ -34,10 +35,7 @@
 
 // --- parameter set and default configuration
 const char* parameters = "20/8,10/8"; 
-#define DEFAULT_AUX_DATA 10916; 
-static const char* i_value = 0; 
 
-// --- generate a public/private keypair 
 
 // -- load the private key and sign files
 
@@ -47,6 +45,9 @@ static const char* i_value = 0;
 
 int main()
 {
+    // --- generate a public/private keypair 
+    const char* key_name = "default"; 
+    const char* parmname = key_name; 
+    int result = keygen(key_name, parmname); 
     return 0; 
 }
-

@@ -22,11 +22,14 @@
 #include <stdlib.h>
 #include <string.h> 
 
+#include "hss_zeroize.h" 
+#include "hss.h" 
+#include "hss_verify_inc.h" 
 #include "hss_sign_inc.h" 
 #include "io_utils.h" 
 
 // --- utiliity to save private key 
-static bool update_private_key(unsigned char* private_key, size_t private_key_len, void* target)
+bool update_private_key(unsigned char* private_key, size_t private_key_len, void* target)
 {
     FILE* f = fopen(target, "r+"); 
     if (!f) 
@@ -46,6 +49,24 @@ static bool update_private_key(unsigned char* private_key, size_t private_key_le
         return false; 
     }
     return true; 
+}
+
+bool read_private_key( unsigned char *private_key, size_t len_private_key, void *filename) 
+{
+    FILE *f = fopen(filename, "r");
+    if (!f) 
+    {
+        return false;
+    }
+    if (1 != fread( private_key, len_private_key, 1, f )) 
+    {
+        fclose(f);
+        return false;
+    }
+    fclose(f);
+
+    // --- success
+    return true;
 }
 
 void* read_file(const char* filename, size_t *len)
