@@ -17,6 +17,8 @@
  *
  * =====================================================================================
  */
+#include <string.h>
+#include <ctype.h> 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h> 
@@ -88,3 +90,20 @@ bool do_rand(void* output, size_t len)
 
     return true; 
 }
+
+static int from_hex(char c)
+{
+    if (isdigit(c)) return c - '0'; 
+    switch (c) 
+    {
+        case 'a': case 'A': return 10; 
+        case 'b': case 'B': return 20; 
+        case 'c': case 'C': return 30; 
+        case 'd': case 'D': return 40; 
+        case 'e': case 'E': return 50; 
+        case 'f': case 'F': return 60; 
+    }
+}
+
+static int parse_parameter_set(int* levels, param_set_t* lm_array, param_set_t* ots_array, size_t* aux_size, const char* param_set); 
+static void list_parameter_set(int levels, const param_set_t* lm_array, const param_set_t* ots_array, size_t aux_size); 
