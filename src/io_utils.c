@@ -23,6 +23,7 @@
 #include <string.h> 
 
 #include "hss_sign_inc.h" 
+#include "io_utils.h" 
 
 // --- utiliity to save private key 
 static bool update_private_key(unsigned char* private_key, size_t private_key_len, void* target)
@@ -45,4 +46,38 @@ static bool update_private_key(unsigned char* private_key, size_t private_key_le
         return false; 
     }
     return true; 
+}
+
+void* read_file(const char* filename, size_t *len)
+{
+    FILE* f = fopen(filename, "r"); 
+    if (!f) return 0; 
+#define FILE_INCREMENT 20000
+
+    unsigned allocation_length = FILE_INCREMENT; 
+    unsigned char* p = malloc(allocation_length); 
+    if (!p) return 0; 
+
+    unsigned current_length = 0; 
+    for (;;) 
+    {
+        unsigned delta = allocation_length - current_length; 
+        if (delta == 0) 
+        {
+            unsigned char* q = realloc(p, allocation_length + FILE_INCREMENT); 
+            if (!q)
+            {
+                free(p); 
+                return 0; 
+            }
+            p = q; 
+            allocation_length += FILE_INCREMENT; 
+            delta = FILE_INCREMENT; 
+        }
+        int n = fread(p + current_length, 1, delta, f); 
+        if (n <= 0) break; 
+        current_length += n; 
+    }
+    if (len) * len = current_length; 
+    return p; 
 }
