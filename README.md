@@ -10,11 +10,20 @@ built by integrating the [hash-sigs](https://github.com/cisco/hash-sigs) LMS lib
   2. [Background]()
   3. [Demo]()
   4. [Integrating with t_cose]()  
+  5. [References]()
+  
   
 ## Installation and Dependencies 
+
+Qose depends on [OpenSSL](https://www.openssl.org/) the general-purpose tookit for cryptography and secure communication. Qose's core dependency is [Hash-Sigs](https://github.com/cisco/hash-sigs), a full-featured implementation of Leighton-Micali signatures [1] using hierarchical signature systems. Qose provides a simple API for interacting with the underlying hash-sigs implementation, intended to be built upon for integration in `t_cose` (see [Integrating with t_cose]()). 
+
+Qose comes packaged with a simple (GNU) makefile whose compiler flags can be easily modified to point to the appropriate locations of your install of hash-sigs and OpenSSL. 
 
 ## Background 
 
 ## Demo 
 
 ## Integrating with t_cose 
+
+## References 
+  [1] [Leighton-Micali Hash-Based Signatures](https://datatracker.ietf.org/doc/html/rfc8554)
