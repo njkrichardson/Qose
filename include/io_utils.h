@@ -21,5 +21,6 @@
 #include <stdlib.h> 
 
 static bool update_private_key(unsigned char* private_key, size_t private_key_len, void* target); 
+void* read_file(const char* filename, size_t *len); 
 
 #endif 
