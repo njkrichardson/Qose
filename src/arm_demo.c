@@ -33,21 +33,20 @@
 #include "io_utils.h"
 #include "utils.h"
 
-// --- parameter set and default configuration
-const char* parameters = "20/8,10/8"; 
-
-
-// -- load the private key and sign files
-
-// -- given the public key, verify the generated signatures 
-
-// -- advance the private key 
-
 int main()
 {
+    // --- parameter set and default configuration
+    const char* parameters = "20/8,10/8"; 
+
     // --- generate a public/private keypair 
     const char* key_name = "default"; 
-    const char* parmname = key_name; 
-    int result = keygen(key_name, parmname); 
+    int result = keygen(key_name, parameters); 
+
+    // -- load the private key and sign files
+    
+    // -- given the public key, verify the generated signatures 
+    
+    // -- advance the private key 
+    
     return 0; 
 }
